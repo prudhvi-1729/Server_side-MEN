@@ -1,15 +1,27 @@
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
+var app = express();
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+var mongoose = require("mongoose");
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var dishRouter = require('./routes/dishRouter');
 var promoRouter = require('./routes/promoRouter');
 var leaderRouter = require('./routes/leaderRouter');
-var app = express();
+const { hostname } = require('os');
+const dburl = "mongodb://127.0.0.1:27017/conFusion"
+const { compile } = require('morgan');
+const connect = mongoose.connect(dburl);
+
+//database connection
+connect.then((db)=>{
+  console.log("connected correctly to database")
+},(err)=>{
+  console.log(err);
+})
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
