@@ -1,1 +1,1 @@
-# Serverside development using nodejs,expressjs and mongodb using express generator
+# Serverside development using nodejs,expressjs and mongodb 
